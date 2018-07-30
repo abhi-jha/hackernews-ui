@@ -19,7 +19,7 @@ $(document).ready(function (){
   var date="";
   date = getDate();
   var  date1 = date;
-  $("#txtDate").keypress(function(){
+  $("#txtDate").click(function(){
        date1 = date;
        date = $(this).val();  
        if(date!=date1)
