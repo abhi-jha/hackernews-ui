@@ -4,36 +4,37 @@
     <head>
     <title>Hackernews clone</title>
     <meta charset="utf-8"> 
-    
+
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="  crossorigin="anonymous"></script>
-    
+
     <script src="js/index.js"></script> 
         
     <link rel="stylesheet" type="text/css" href="css/index.css">
-        
+
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-	<!-- jQuery library -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 	<!-- Latest compiled JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    
     </head>
     <body style="background-color: cornsilk">
         <h1 style="color:#804000">The most happening news in technological cirlces</h1>
         <div id="ifServerDown">
             <div class="myDateInput" style="margin-right: auto; margin-left: auto; width: 800px;">
-                Please enter a date in ddmmyyyy format and then click on the box :      
-                <form><input type="text" name="txtJob" id="txtDate" value="" style="width: 90px; text-align: center"></form>
+                <form>
+                    Please enter a date in DDMMYYYY format:
+                    <input type="text" name="txtJob" id="txtDate" value="" style="width: 90px; text-align: center">
+                    <button id="getarticles" style="display: inline-block">Get Articles</button>
+                </form>
             </div>
             <div class="mainConatiner container">
                 <table class="table  table-hover" id="dataTable" style="background-color: cornsilk; border: none">
                 <tr></tr>
                 </table>
             </div>
+            <button class="prevpage" title="gibtitle">prev</button>
+            <button class="nextpage" title="gibtitle">next</button>
         </div>
     </body>
 </html>
