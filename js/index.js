@@ -65,6 +65,7 @@ $(document).ready(function () {
                 + "<td>No matches for the date</td>"
                 + "<td>No matches for the date</td>"
                 + "<td>No matches for the date</td>"
+                + "<td>No matches for the date</td>"
                 + "</tr>";
             $('#dataTable').replaceWith(tableHeader + temp + "</table>");
             return;
