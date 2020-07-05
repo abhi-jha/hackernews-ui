@@ -118,6 +118,7 @@ $(document).ready(function () {
 
     function basicButtonSetup(event, other_selectors, message, value_to_put_in_check_box, baseUrl){
         event.target.style.backgroundColor = "green";
+        current_url = baseUrl;
         for(let  i = 0; i < other_selectors.length; i++)
             other_selectors[i].style.backgroundColor = "white"
         messagetodisplay.innerText = message;
