@@ -8,6 +8,11 @@ $(document).ready(function () {
     let score_message = "Please enter a score value";
     let current_url = url_for_paginate_date;
     let defaultLowerlimitScore = 4000;
+    let num_fo_columns = 6;
+    let tableHeader = "<table class='table table-hover' id='dataTable' style='background-color: cornsilk;'><tr></tr><tr><td>S.No.</td><td>id</td><td>title</td><td>url</td><td>time</td><td>score</td></tr>";
+    let getbyDate = document.querySelector("#getbyDate");
+    let getByScore = document.querySelector("#getByScore");
+    let messagetodisplay = document.querySelector("#messagetodisplay span");
 
     function getDate() {
         let today = new Date();
@@ -33,7 +38,7 @@ $(document).ready(function () {
             dataType: 'json',
             cache: false,
             success: function (response, status, xhr) {
-                order(response, count);
+                displayAjaxResult(response, count);
                 let nextpagelink = xhr.getResponseHeader("nextpage");
                 let prevpagelink = xhr.getResponseHeader("prevpage");
                 if (prevpagelink === null) {
@@ -61,18 +66,19 @@ $(document).ready(function () {
         });
     }
 
-    function order(response, count) {
-        let tableHeader = "<table class='table table-hover' id='dataTable' style='background-color: cornsilk;'><tr></tr><tr><td>S.No.</td><td>id</td><td>title</td><td>url</td><td>time</td><td>score</td></tr>"
+    function buildDefaultaMessage(defaultMessage, count_of_columns){
+        let temp = "<tr></tr><tr>";
+        for(let i  = 0 ; i <  count_of_columns; i++){
+            temp += `<td>${defaultMessage}</td>`;
+        }
+        temp += "</tr>"
+        let final_table =  tableHeader + temp + "</table>";
+        return final_table;
+    }
+
+    function displayAjaxResult(response, count) {
         if (response.length === 0) {
-            let temp = "<tr></tr><tr>"
-                + "<td>No matches for the date</td>"
-                + "<td>No matches for the date</td>"
-                + "<td>No matches for the date</td>"
-                + "<td>No matches for the date</td>"
-                + "<td>No matches for the date</td>"
-                + "<td>No matches for the date</td>"
-                + "</tr>";
-            $('#dataTable').replaceWith(tableHeader + temp + "</table>");
+            $('#dataTable').replaceWith(buildDefaultaMessage("No matches", num_fo_columns));
             return;
         }
 
@@ -103,16 +109,12 @@ $(document).ready(function () {
         countforward += 10;
         doAJAX(event.target.title, countforward);
     });
+
     prevpage.addEventListener('click', function (event) {
         countbackward = countforward - 10;
         countforward = countbackward;
         doAJAX(event.target.title, countbackward);
     });
-
-    getbyDate = document.querySelector("#getbyDate");
-    getByScore = document.querySelector("#getByScore");
-    messagetodisplay = document.querySelector("#messagetodisplay span");
-
 
     getbyDate.addEventListener('click', function(event){
         event.target.style.backgroundColor = "green";
@@ -122,6 +124,7 @@ $(document).ready(function () {
         txtDate = document.querySelector("#txtDate");
         txtDate.value = date;
         current_url = url_for_paginate_date;
+        $('#dataTable').replaceWith(buildDefaultaMessage("Looking", num_fo_columns));
         doAJAX(current_url + date, countforward);//Call AJAX. Another calling point.
     })
 
@@ -132,18 +135,18 @@ $(document).ready(function () {
         txtDate = document.querySelector("#txtDate");
         txtDate.value = defaultLowerlimitScore;
         current_url = url_for_paginate_score;
+        $('#dataTable').replaceWith(buildDefaultaMessage("Looking", num_fo_columns));
         doAJAX(current_url + txtDate.value, countforward);//Call AJAX. Another calling point.
     })
-
 
     function runthis() {
         let date = getDate();
         messagetodisplay.innerText = date_message;
-        getbyDate.style.backgroundColor = "red";
+        getbyDate.style.backgroundColor = "green";
         getByScore.style.backgroundColor = "white";
         $("#txtDate").attr("value", date);
         doAJAX(url_for_paginate_date + date, countforward);//Call AJAX. This is the first calling point.
     }
 
-    runthis();
+    runthis();//The actual call happens here.
 });
