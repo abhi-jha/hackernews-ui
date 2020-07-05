@@ -22,8 +22,10 @@
         <h1 style="color:#804000">The most happening news in technological cirlces</h1>
         <div id="ifServerDown">
             <div class="myDateInput" style="margin-right: auto; margin-left: auto; width: 800px;">
-                <form>
-                    Please enter a date in DDMMYYYY format:
+            <button id="getbyDate" style="display: inline-block">Get Articles By Date</button>
+            <button id="getByScore" style="display: inline-block">Get Articles By Score</button>
+                <form id="messagetodisplay">
+                    <span></span>
                     <input type="text" name="txtJob" id="txtDate" value="" style="width: 90px; text-align: center">
                     <button id="getarticles" style="display: inline-block">Get Articles</button>
                 </form>
