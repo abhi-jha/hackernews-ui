@@ -116,9 +116,10 @@ $(document).ready(function () {
         doAJAX(event.target.title, countbackward);
     });
 
-    function basicButtonSetup(message, value_to_put_in_check_box, baseUrl){
+    function basicButtonSetup(event, other_selectors, message, value_to_put_in_check_box, baseUrl){
         event.target.style.backgroundColor = "green";
-        getByScore.style.backgroundColor = "white"
+        for(let  i = 0; i < other_selectors.length; i++)
+            other_selectors[i].style.backgroundColor = "white"
         messagetodisplay.innerText = message;
         txtDate = document.querySelector("#txtDate");
         txtDate.value = value_to_put_in_check_box;
@@ -131,11 +132,13 @@ $(document).ready(function () {
     }
 
     getbyDate.addEventListener('click', function(event){
-        basicButtonSetup(date_message, getDate(), url_for_paginate_date)
+        other_selectors = [getByScore]
+        basicButtonSetup(event, other_selectors, date_message, getDate(), url_for_paginate_date)
     })
 
     getByScore.addEventListener('click', function(event){
-        basicButtonSetup(score_message, defaultLowerlimitScore, url_for_paginate_score);
+        other_selectors = [getbyDate]
+        basicButtonSetup(event, other_selectors, score_message, defaultLowerlimitScore, url_for_paginate_score);
     })
 
     function runthis() {
