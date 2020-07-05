@@ -116,27 +116,26 @@ $(document).ready(function () {
         doAJAX(event.target.title, countbackward);
     });
 
-    getbyDate.addEventListener('click', function(event){
+    function basicButtonSetup(message, value_to_put_in_check_box, baseUrl){
         event.target.style.backgroundColor = "green";
         getByScore.style.backgroundColor = "white"
-        messagetodisplay.innerText = date_message;
-        let date = getDate();
+        messagetodisplay.innerText = message;
         txtDate = document.querySelector("#txtDate");
-        txtDate.value = date;
-        current_url = url_for_paginate_date;
+        txtDate.value = value_to_put_in_check_box;
+        prevpage.style.display = 'none';
+        prevpage.title = "gibtitle";
+        nextpage.style.display = 'none';
+        nextpage.title = "gibtitle";
         $('#dataTable').replaceWith(buildDefaultaMessage("Looking", num_fo_columns));
-        doAJAX(current_url + date, countforward);//Call AJAX. Another calling point.
+        doAJAX(baseUrl + txtDate.value, countforward);//Call AJAX. Another API calling point.
+    }
+
+    getbyDate.addEventListener('click', function(event){
+        basicButtonSetup(date_message, getDate(), url_for_paginate_date)
     })
 
     getByScore.addEventListener('click', function(event){
-        event.target.style.backgroundColor = "green";
-        getbyDate.style.backgroundColor = "white";
-        messagetodisplay.innerText = score_message;
-        txtDate = document.querySelector("#txtDate");
-        txtDate.value = defaultLowerlimitScore;
-        current_url = url_for_paginate_score;
-        $('#dataTable').replaceWith(buildDefaultaMessage("Looking", num_fo_columns));
-        doAJAX(current_url + txtDate.value, countforward);//Call AJAX. Another calling point.
+        basicButtonSetup(score_message, defaultLowerlimitScore, url_for_paginate_score);
     })
 
     function runthis() {
@@ -145,8 +144,8 @@ $(document).ready(function () {
         getbyDate.style.backgroundColor = "green";
         getByScore.style.backgroundColor = "white";
         $("#txtDate").attr("value", date);
-        doAJAX(url_for_paginate_date + date, countforward);//Call AJAX. This is the first calling point.
+        doAJAX(url_for_paginate_date + date, countforward);//Call AJAX. This is the first API calling point.
     }
 
-    runthis();//The actual call happens here.
+    runthis();//The actual INITIAL call happens here.
 });
