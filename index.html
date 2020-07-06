@@ -2,7 +2,7 @@
 
 <html>
     <head>
-    <title>Hackernews clone</title>
+    <title>Production compiler</title>
     <meta charset="utf-8"> 
 
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="  crossorigin="anonymous"></script>
@@ -19,17 +19,23 @@
 
     </head>
     <body style="background-color: cornsilk">
-        <h1 style="color:#804000">The most happening news in technological cirlces</h1>
         <div id="ifServerDown">
-            <div class="myDateInput" style="margin-right: auto; margin-left: auto; width: 800px;">
-            <button id="getbyDate" style="display: inline-block">Get Articles By Date</button>
-            <button id="getByScore" style="display: inline-block">Get Articles By Score</button>
-            <button id="getByText" style="display: inline-block">Get Articles By Text</button>
-                <form id="messagetodisplay">
-                    <span></span>
-                    <input type="text" name="txtJob" id="txtDate" value="" style="width: 90px; text-align: center">
-                    <button id="getarticles" style="display: inline-block">Get Articles</button>
-                </form>
+            <div class="headerAndButtons">
+                <h5 class="pageHeading" style="color:#804000;">Production compilers : The most happening news in technological cirlces</h4>
+                <div class="myDateInput" style="margin-right: auto; margin-left: auto; width: 800px;">
+                    <div class="buttonContainer">
+                        <button id="getbyDate" style="display: inline-block">Get Articles By Date</button>
+                        <button id="getByScore" style="display: inline-block">Get Articles By Score</button>
+                        <button id="getByText" style="display: inline-block">Get Articles By Text</button>
+                    </div>
+                    <div class="inputPanel">
+                        <form id="messagetodisplay">
+                            <span></span>
+                            <input type="text" name="txtJob" id="txtDate" value="" style="width: 90px; text-align: center">
+                            <button id="getarticles" style="display: inline-block">Get Articles</button>
+                        </form>
+                    </div>
+                </div>
             </div>
             <div class="mainConatiner container">
                 <table class="table  table-hover" id="dataTable" style="background-color: cornsilk; border: none">
