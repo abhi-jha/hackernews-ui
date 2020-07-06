@@ -120,7 +120,7 @@ $(document).ready(function () {
     });
 
     function basicButtonSetup(event, other_selectors, message, value_to_put_in_check_box, baseUrl){
-        event.target.style.backgroundColor = "green";
+        event.target.style.backgroundColor = "#f16430";
         current_url = baseUrl;
         for(let  i = 0; i < other_selectors.length; i++)
             other_selectors[i].style.backgroundColor = "white"
@@ -153,7 +153,7 @@ $(document).ready(function () {
     function runthis() {
         let date = getDate();
         messagetodisplay.innerText = date_message;
-        getbyDate.style.backgroundColor = "green";
+        getbyDate.style.backgroundColor = "#f16430";
         getByScore.style.backgroundColor = "white";
         getByText.style.backgroundColor = "white";
         $("#txtDate").attr("value", date);
