@@ -1,17 +1,20 @@
 $(document).ready(function () {
     let url_for_paginate_date = "http://localhost:9001/api/v1/paginate/date/";
     let url_for_paginate_score = "http://localhost:9001/api/v1/paginate/score/";
+    let url_for_paginate_text = "http://localhost:9001/api/v1/paginate/match/";
     let prevpage = document.querySelector(".prevpage");
     let nextpage = document.querySelector(".nextpage");
     let countforward = 1, countbackward = 1;
     let date_message = "Please enter a date in DDMMYYYY format:";
     let score_message = "Please enter a score value";
+    let text_message= "Please enter a text : "
     let current_url = url_for_paginate_date;
     let defaultLowerlimitScore = 4000;
     let num_fo_columns = 6;
     let tableHeader = "<table class='table table-hover' id='dataTable' style='background-color: cornsilk;'><tr></tr><tr><td>S.No.</td><td>id</td><td>title</td><td>url</td><td>time</td><td>score</td></tr>";
     let getbyDate = document.querySelector("#getbyDate");
     let getByScore = document.querySelector("#getByScore");
+    let getByText = document.querySelector("#getByText");
     let messagetodisplay = document.querySelector("#messagetodisplay span");
 
     function getDate() {
@@ -133,13 +136,18 @@ $(document).ready(function () {
     }
 
     getbyDate.addEventListener('click', function(event){
-        other_selectors = [getByScore]
+        other_selectors = [getByScore, getByText]
         basicButtonSetup(event, other_selectors, date_message, getDate(), url_for_paginate_date)
     })
 
     getByScore.addEventListener('click', function(event){
-        other_selectors = [getbyDate]
+        other_selectors = [getbyDate, getByText]
         basicButtonSetup(event, other_selectors, score_message, defaultLowerlimitScore, url_for_paginate_score);
+    })
+
+    getByText.addEventListener('click', function(event){
+        other_selectors = [getbyDate, getbyDate]
+        basicButtonSetup(event, other_selectors, text_message, "math", url_for_paginate_text);
     })
 
     function runthis() {
@@ -147,6 +155,7 @@ $(document).ready(function () {
         messagetodisplay.innerText = date_message;
         getbyDate.style.backgroundColor = "green";
         getByScore.style.backgroundColor = "white";
+        getByText.style.backgroundColor = "white";
         $("#txtDate").attr("value", date);
         doAJAX(url_for_paginate_date + date, countforward);//Call AJAX. This is the first API calling point.
     }
