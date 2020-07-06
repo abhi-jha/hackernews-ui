@@ -146,7 +146,7 @@ $(document).ready(function () {
     })
 
     getByText.addEventListener('click', function(event){
-        other_selectors = [getbyDate, getbyDate]
+        other_selectors = [getbyDate, getByScore]
         basicButtonSetup(event, other_selectors, text_message, "math", url_for_paginate_text);
     })
 
