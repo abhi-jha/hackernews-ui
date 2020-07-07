@@ -5,9 +5,9 @@ $(document).ready(function () {
     let prevpage = document.querySelector(".prevpage");
     let nextpage = document.querySelector(".nextpage");
     let countforward = 1, countbackward = 1;
-    let date_message = "Please enter a date in DDMMYYYY format:";
-    let score_message = "Please enter a score value";
-    let text_message= "Please enter a text : "
+    let date_message = "date :";
+    let score_message = "score : ";
+    let text_message= "text : "
     let current_url = url_for_paginate_date;
     let defaultLowerlimitScore = 4000;
     let num_fo_columns = 6;

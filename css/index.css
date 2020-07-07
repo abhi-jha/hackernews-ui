@@ -45,6 +45,9 @@ tr{
 .headerAndButtons{
     display: flex;
     background-color: burlywood;
+    overflow-y:auto;
+    height:100%;
+
 }
 
 .nextpage, .prevpage{
