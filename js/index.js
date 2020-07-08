@@ -90,12 +90,13 @@ $(document).ready(function () {
             return b.score - a.score;
         });
         for (let i = 0; i < response.length; i++) {
+            let d = new Date(response[i].time);
             tableData = tableData + "<tr>"
                 + "<td>" + count++ + "</td>"
                 + "<td>" + response[i].id + "</td>"
                 + "<td>" + response[i].title + "</td>"
                 + "<td>" + "<a href= " + response[i].url + "> Link</a>" + "</td>"
-                + "<td>" + response[i].time + "</td>"
+                + `<td title=${d.toTimeString()}>` + d.toDateString() + "</td>"
                 + "<td>" + response[i].score + "</td>"
                 + "</tr>";
         }
