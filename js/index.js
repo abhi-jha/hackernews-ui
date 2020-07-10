@@ -76,7 +76,7 @@ $(document).ready(function () {
         for(let i  = 0 ; i <  count_of_columns; i++){
             temp += `<td>${defaultMessage}</td>`;
         }
-        return tableHeader + "</tr>" + "</table>";
+        return tableHeader + temp + "</tr>" + "</table>";
     }
 
     function displayAjaxResult(response, count) {
