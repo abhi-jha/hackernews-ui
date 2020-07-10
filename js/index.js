@@ -16,6 +16,7 @@ $(document).ready(function () {
     let getByScore = document.querySelector("#getByScore");
     let getByText = document.querySelector("#getByText");
     let messagetodisplay = document.querySelector("#messagetodisplay span");
+    let datatable = $('#dataTable');
 
     function getDate() {
         let today = new Date();
@@ -69,19 +70,17 @@ $(document).ready(function () {
         });
     }
 
-    function buildDefaultaMessage(defaultMessage, count_of_columns){
+    function buildDefaultMessage(defaultMessage, count_of_columns){
         let temp = "<tr></tr><tr>";
         for(let i  = 0 ; i <  count_of_columns; i++){
             temp += `<td>${defaultMessage}</td>`;
         }
-        temp += "</tr>"
-        let final_table =  tableHeader + temp + "</table>";
-        return final_table;
+        return tableHeader + "</tr>" + "</table>";
     }
 
     function displayAjaxResult(response, count) {
         if (response.length === 0) {
-            $('#dataTable').replaceWith(buildDefaultaMessage("No matches", num_fo_columns));
+            datatable.replaceWith(buildDefaultMessage("No matches", num_fo_columns));
             return;
         }
 
@@ -100,7 +99,7 @@ $(document).ready(function () {
                 + "<td>" + response[i].score + "</td>"
                 + "</tr>";
         }
-        $('#dataTable').replaceWith(tableHeader + tableData + "</table>");
+        datatable.replaceWith(tableHeader + tableData + "</table>");
     }
 
     $("#getarticles").click(function (event) {
@@ -126,28 +125,28 @@ $(document).ready(function () {
         for(let  i = 0; i < other_selectors.length; i++)
             other_selectors[i].style.backgroundColor = "white"
         messagetodisplay.innerText = message;
-        txtDate = document.querySelector("#txtDate");
+        let txtDate = document.querySelector("#txtDate");
         txtDate.value = value_to_put_in_check_box;
         prevpage.style.display = 'none';
         prevpage.title = "gibtitle";
         nextpage.style.display = 'none';
         nextpage.title = "gibtitle";
-        $('#dataTable').replaceWith(buildDefaultaMessage("Looking", num_fo_columns));
+        datatable.replaceWith(buildDefaultMessage("Looking", num_fo_columns));
         doAJAX(baseUrl + txtDate.value, countforward);//Call AJAX. Another API calling point.
     }
 
     getbyDate.addEventListener('click', function(event){
-        other_selectors = [getByScore, getByText]
+        let other_selectors = [getByScore, getByText]
         basicButtonSetup(event, other_selectors, date_message, getDate(), url_for_paginate_date)
     })
 
     getByScore.addEventListener('click', function(event){
-        other_selectors = [getbyDate, getByText]
+        let other_selectors = [getbyDate, getByText]
         basicButtonSetup(event, other_selectors, score_message, defaultLowerlimitScore, url_for_paginate_score);
     })
 
     getByText.addEventListener('click', function(event){
-        other_selectors = [getbyDate, getByScore]
+        let other_selectors = [getbyDate, getByScore]
         basicButtonSetup(event, other_selectors, text_message, "math", url_for_paginate_text);
     })
 
