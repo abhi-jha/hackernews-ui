@@ -1,7 +1,8 @@
 $(document).ready(function () {
-    let url_for_paginate_date = "http://localhost:9001/api/v1/paginate/date/";
-    let url_for_paginate_score = "http://localhost:9001/api/v1/paginate/score/";
-    let url_for_paginate_text = "http://localhost:9001/api/v1/paginate/match/";
+    let base_rul = "http://localhost:9001/api/v1/paginate/";
+    let url_for_paginate_date = base_rul + "date/";
+    let url_for_paginate_score = base_rul + "score/";
+    let url_for_paginate_text = base_rul + "match/";
     let prevpage = document.querySelector(".prevpage");
     let nextpage = document.querySelector(".nextpage");
     let countforward = 1, countbackward = 1;
