@@ -17,7 +17,6 @@ $(document).ready(function () {
     let getByScore = document.querySelector("#getByScore");
     let getByText = document.querySelector("#getByText");
     let messagetodisplay = document.querySelector("#messagetodisplay span");
-    let datatable = $('#dataTable');
 
     function getDate() {
         let today = new Date();
@@ -81,7 +80,7 @@ $(document).ready(function () {
 
     function displayAjaxResult(response, count) {
         if (response.length === 0) {
-            datatable.replaceWith(buildDefaultMessage("No matches", num_fo_columns));
+            $('#dataTable').replaceWith(buildDefaultMessage("No matches", num_fo_columns));
             return;
         }
 
@@ -100,7 +99,7 @@ $(document).ready(function () {
                 + "<td>" + response[i].score + "</td>"
                 + "</tr>";
         }
-        datatable.replaceWith(tableHeader + tableData + "</table>");
+        $('#dataTable').replaceWith(tableHeader + tableData + "</table>");
     }
 
     $("#getarticles").click(function (event) {
@@ -132,7 +131,7 @@ $(document).ready(function () {
         prevpage.title = "gibtitle";
         nextpage.style.display = 'none';
         nextpage.title = "gibtitle";
-        datatable.replaceWith(buildDefaultMessage("Looking", num_fo_columns));
+        $('#dataTable').replaceWith(buildDefaultMessage("Looking", num_fo_columns));
         doAJAX(baseUrl + txtDate.value, countforward);//Call AJAX. Another API calling point.
     }
 
