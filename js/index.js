@@ -30,7 +30,7 @@ $(document).ready(function () {
         if (mm < 10) {
             mm = '0' + mm;
         }
-        today = dd + mm + yyyy;
+        today = dd + "" + mm + "" + yyyy;
         return today;
     }
 
